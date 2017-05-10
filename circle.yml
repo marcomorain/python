@@ -3,5 +3,5 @@ machine:
     version: 2.7.13
 test:
   override:
-    - main.py
+    - ./main.py
 
