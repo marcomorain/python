@@ -1,4 +1,7 @@
 machine:
+  xcode:
+    version:
+      7.3
   pre:
     - brew install python
     - pip install virtualenv
