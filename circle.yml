@@ -7,5 +7,7 @@ machine:
     - pip install virtualenv
 test:
   override:
+    - time curl https://cocoapods-specs.circleci.com/latest.tar.gz > foo.tgz
+    - time curl https://cocoapods-specs.circleci.com/latest.tar.gz > /dev/null
     - ./main.py
 
