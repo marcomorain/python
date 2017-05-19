@@ -2,8 +2,6 @@ machine:
   xcode:
     version:
       8.0
-  timezone:
-    America/Los_Angeles
   ruby:
     version: 1.9.3-p0-falcon
   services:
