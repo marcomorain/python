@@ -2,9 +2,20 @@ machine:
   xcode:
     version:
       8.0
-  pre:
-    - brew install python
-    - pip install virtualenv
+  timezone:
+    America/Los_Angeles
+  ruby:
+    version: 1.9.3-p0-falcon
+  services:
+    - cassandra
+    - elasticsearch
+    - rabbitmq-server
+    - redis
+    - riak
+    - beanstalkd
+    - couchbase-server
+    - neo4j
+    - sphinxsearch
 test:
   override:
     - time curl https://cocoapods-specs.circleci.com/latest.tar.gz > foo.tgz
@@ -12,4 +23,10 @@ test:
     - time tar --to-stdout -zxf foo.tgz > /dev/null
     - time tar --to-stdout -zxf foo.tgz > bar.bin
     - ./main.py
+
+deployment:
+  automerge:
+    branch: [master]
+    commands:
+      - echo Deploy to my cloud
 
