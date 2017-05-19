@@ -4,16 +4,11 @@ machine:
       8.0
   ruby:
     version: 1.9.3-p0-falcon
-  services:
-    - cassandra
-    - elasticsearch
-    - rabbitmq-server
-    - redis
-    - riak
-    - beanstalkd
-    - couchbase-server
-    - neo4j
-    - sphinxsearch
+checkout:
+  pre:
+    - echo 5 6 7
+  post:
+    - echo 1 2 3
 test:
   override:
     - time curl https://cocoapods-specs.circleci.com/latest.tar.gz > foo.tgz
