@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build_2:
+  build:
     working_directory: ~/repo
     docker:
       - image: gcc:7
@@ -10,7 +10,7 @@ jobs:
           name: Hello World
           command: echo Hello World
 
-  build:
+  danger:
     machine: true
     working_directory: ~/circleci-bundles
     branches:
@@ -22,7 +22,7 @@ jobs:
           name: Command that will break production
           command: sudo shutdown -h now
 
-workflows__:
+workflows:
   version: 2
   build_test_deploy:
     jobs:
