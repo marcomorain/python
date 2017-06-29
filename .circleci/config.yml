@@ -1,71 +1,32 @@
 version: 2
-android_env: &android_env
-  # This is common config is shared across all workflows.
-  docker:
-    # Use a CircleCI provided convience image.
-    - image: circleci/android:api-25-alpha
-  environment:
-    TERM: dumb
-    _JAVA_OPTIONS: -Xms512m -Xmx3072m
-    JAVA_OPTS:     -Xms512m -Xmx3072m -XX:+HeapDumpOnOutOfMemoryError
-    GRADLE_OPTS:   -Xmx512m -Dorg.gradle.jvmargs="-Xmx4608m -XX:+HeapDumpOnOutOfMemoryError"
-  working_directory: ~/SmartThingsAndroid
-
 jobs:
-
-  # This job named 'build' was necessary for Marc to test CircleCI and workflows
-  # without commit access to the repository. It can be deleted from config.yml
   build:
-    <<: *android_env
+    working_directory: ~/repo
+    docker:
+      - image: gcc:7
     steps:
       - checkout
       - run:
-         name: Test Job
-         command: echo test
+          name: Hello World
+          command: echo Hello World
 
-
-  build_debug:
-    <<: *android_env
+  danger:
+    machine: true
+    working_directory: ~/circleci-bundles
+    branches:
+      only:
+        - this-branch-never-exists
     steps:
       - checkout
       - run:
-          name: Sleep
-          command: sleep 100
-
-  build_production:
-    <<: *android_env
-    steps:
-      - checkout
-      - run:
-          name: Sleep
-          command: sleep 100
-
-  deploy_debug:
-    <<: *android_env
-    steps:
-      - checkout
-      - run:
-          name: Sleep
-          command: sleep 100
-
-  deploy_production:
-    <<: *android_env
-    steps:
-      - checkout
-      - run:
-          name: Sleep
-          command: sleep 100
+          name: Command that will break production
+          command: sudo shutdown -h now
 
 workflows:
   version: 2
-  # Define a workflow with 2 parallel jobs
   build_test_deploy:
     jobs:
-      - build_debug
-      - build_production
-      - deploy_debug:
-          requires: [build_debug]
-          filters: { branches: { only: master }}
-      - deploy_production:
-          requires: [build_production]
-          filters: { branches: { only: /release-.*/ }}
+      - build
+      - danger:
+          requires:
+            - build
