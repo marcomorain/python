@@ -9,24 +9,3 @@ jobs:
       - run:
           name: Hello World
           command: echo Hello World
-
-  danger:
-    machine: true
-    working_directory: ~/circleci-bundles
-    branches:
-      only:
-        - this-branch-never-exists
-    steps:
-      - checkout
-      - run:
-          name: Command that will break production
-          command: sudo shutdown -h now
-
-workflows:
-  version: 2
-  build_test_deploy:
-    jobs:
-      - build
-      - danger:
-          requires:
-            - build
