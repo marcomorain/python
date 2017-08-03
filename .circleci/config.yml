@@ -1,9 +1,9 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/repo
-    docker:
-      - image: gcc:7
+    macos:
+      xcode:
+        version: 8.3.3
     steps:
       - checkout
       - run:
