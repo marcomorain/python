@@ -3,7 +3,7 @@ jobs:
   build:
     macos:
       xcode:
-        version: 8.3.3
+        version: 8.2.1
     steps:
       - checkout
       - run:
