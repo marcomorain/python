@@ -1,12 +1,19 @@
 version: 2
 jobs:
   build:
-    macos:
-      xcode:
-        version: 8.2.1
-
+    machine: true
     steps:
       - checkout
       - run:
           name: Hello World
-          command: echo Hello World
+          command: ulimit -n
+      - run:
+          name: Generate Files
+          command: |
+            mkdir build
+            for n in {0001..5000}; do
+              cp main.py build/main-copy-$n.jpg
+            done
+      - store_artifacts:
+          path: build
+
