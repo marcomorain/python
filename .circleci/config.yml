@@ -1,19 +1,14 @@
 version: 2
 jobs:
   build:
-    machine: true
+    environment:
+        _JAVA_OPTIONS: -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap
+        GRADLE_OPTS: '-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-Xmx3500m -XX:+HeapDumpOnOutOfMemoryError"'
+      docker:
+        - image: hoopla/circleci2-android-image
+
     steps:
       - checkout
       - run:
-          name: Hello World
-          command: ulimit -n
-      - run:
-          name: Generate Files
-          command: |
-            mkdir build
-            for n in {0001..5000}; do
-              cp main.py build/main-copy-$n.jpg
-            done
-      - store_artifacts:
-          path: build
-
+          name: Build Short term APK
+          command: cd android && ./gradlew assembleReleaseShortTerm
