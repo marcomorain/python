@@ -4,8 +4,8 @@ jobs:
     macos:
       xcode:
         version: "9.0"
+    shell: /bin/bash --login -eo pipefail
 
     steps:
       - checkout
-      - run: cp ~/.bash_profile ~/.bashrc
       - run: ruby -v
