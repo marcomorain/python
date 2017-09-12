@@ -7,4 +7,5 @@ jobs:
 
     steps:
       - checkout
+      - run: cp ~/.bash_profile ~/.bashrc
       - run: ruby -v
