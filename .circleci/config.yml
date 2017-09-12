@@ -3,7 +3,7 @@ jobs:
   build:
     macos:
       xcode:
-        version: "9.0"
+        version: "9.1"
     shell: /bin/bash --login -eo pipefail
 
     steps:
