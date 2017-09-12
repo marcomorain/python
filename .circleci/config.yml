@@ -4,12 +4,7 @@ jobs:
     macos:
       xcode:
         version: "9.1"
-    shell: /bin/bash --login -eo pipefail
 
     steps:
       - checkout
-      - run: mkdir -p captures; screencapture captures/1.png
       - run: ruby -v
-      - run: mkdir -p captures; screencapture captures/2.png
-      - store_artifacts:
-          path: captures
