@@ -1,9 +1,8 @@
 version: 2
 jobs:
   build:
-    macos:
-      xcode:
-        version: "9.1"
+    docker:
+      - image: circleci/ruby:2.4
 
     steps:
       - checkout
