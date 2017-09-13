@@ -1,9 +1,31 @@
 version: 2
+
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4
-
+      - image: circleci/android:api-25-alpha
     steps:
       - checkout
-      - run: ruby -v
+      - run: echo 1
+  deploy:
+    docker:
+      - image: circleci/ruby:2.1
+    steps:
+      - run:
+          name: Install Fastlane
+          command: gem install fastlane
+
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            # Run for all tags and no branches
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
