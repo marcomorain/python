@@ -5,7 +5,6 @@ import requests
 def hello(s):
   print('hello %s' % s)
 
-
 hello('world')
 
 r = requests.get('https://api.github.com/user', auth=('user', 'pass'))
