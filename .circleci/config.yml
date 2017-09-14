@@ -6,6 +6,7 @@ jobs:
       xcode: "9.0"
     steps:
       - checkout
+      - run: echo $BASH_ENV
       - run: ruby -v
       - run: launchctl setenv BASH_ENV $HOME/.bash_profile
       - run: ruby -v
