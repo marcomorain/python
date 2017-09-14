@@ -2,6 +2,8 @@ version: 2
 
 jobs:
   build:
+    environment:
+      BASH_ENV: $HOME/.bashrc
     macos:
       xcode: "9.0"
     steps:
