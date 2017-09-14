@@ -8,6 +8,9 @@ jobs:
       xcode: "9.0"
     steps:
       - checkout
+      - run: cat ~/.bashrc
+      - run: cat ~/.bash_profile
+
       - run: echo 'echo loaded bash_profile' >> ~/.bash_profile
       - run: echo 'echo loaded bashrc' >> ~/.bashrc
       - run: echo $BASH_ENV
