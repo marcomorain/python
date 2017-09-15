@@ -5,6 +5,8 @@ jobs:
     macos:
       xcode: "9.0"
     steps:
+      - run: ls $HOME
+      - run: cat ~/.circlerc
       - run: env
       - run: ruby -v
       
