@@ -9,6 +9,8 @@ jobs:
       BASH_ENV: /Users/distiller/.circlerc
     steps:
       - run: ls $HOME
+      - run: cat /usr/local/opt/chruby/share/chruby/chruby.sh
+      - run: cat /usr/local/opt/chruby/share/chruby/auto.sh
       - run: source $BASH_ENV && cat ~/.circlerc
       - run: env
       - run: source $BASH_ENV && cat ~/.circlerc && ruby -v
