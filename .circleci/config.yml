@@ -4,6 +4,7 @@ jobs:
   build:
     macos:
       xcode: "9.0"
+    parallel: 2
     steps:
       - run: ls $HOME
       - run: cat ~/.circlerc
