@@ -9,7 +9,7 @@ jobs:
       BASH_ENV: /Users/distiller/.circlerc
     steps:
       - run: ls $HOME
-      - run: cat ~/.circlerc
+      - run: source $BASH_ENV && cat ~/.circlerc
       - run: env
-      - run: ruby -v
+      - run: source $BASH_ENV && cat ~/.circlerc && ruby -v
       
