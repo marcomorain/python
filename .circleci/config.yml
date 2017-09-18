@@ -14,4 +14,6 @@ jobs:
       - run: source $BASH_ENV && cat ~/.circlerc
       - run: env
       - run: source $BASH_ENV && cat ~/.circlerc && ruby -v
+      - run: chruby-exec system   -- ruby -v
+      - run: chruby-exec ruby-2.3 -- ruby -v
       
