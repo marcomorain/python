@@ -4,17 +4,7 @@ jobs:
   build:
     macos:
       xcode: "9.0"
-    #parallel: 2
-    environment:
-      BASH_ENV: /Users/distiller/.circlerc
     steps:
-      - run: ls $HOME
-      - run: cat /usr/local/opt/chruby/share/chruby/chruby.sh
-      - run: cat /usr/local/opt/chruby/share/chruby/auto.sh
-      - run: source $BASH_ENV && cat ~/.circlerc
-      - run: env
-      - run: echo $BASH_VERSION
-      - run: source $BASH_ENV && cat ~/.circlerc && ruby -v
       - run: chruby-exec system   -- ruby -v
       - run: chruby-exec ruby-2.3 -- ruby -v
       
