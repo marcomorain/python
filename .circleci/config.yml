@@ -2,9 +2,10 @@ version: 2
 
 jobs:
   build:
-    macos:
-      xcode: "9.0"
+    docker:
+      - image: circleci/android:api-26-alpha
     steps:
-      - run: chruby-exec system   -- ruby -v
-      - run: chruby-exec ruby-2.3 -- ruby -v
+      - checkout
+      - run: bundle install
+      - run: bundle exec fastlane help
       
