@@ -6,6 +6,14 @@ jobs:
       - image: circleci/android:api-26-alpha
     steps:
       - checkout
-      - run: bundle install
-      - run: bundle exec fastlane help
+      - run:
+          name: wat
+          command: bundle install
+          environment:
+            BUNDLE_JOBS: 3
+            BUNDLE_RETRY: 3
+            BUNDLE_PATH: vendor/bundle
+      - run:
+          command: PATH=~/.bundle/bin:$PATH bundle exec fastlane test
+          name: try this
       
