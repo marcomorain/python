@@ -8,12 +8,11 @@ jobs:
       - checkout
       - run:
           name: wat
-          command: bundle install
+          command: bundle install --path vendor/bundle
           environment:
             BUNDLE_JOBS: 3
             BUNDLE_RETRY: 3
-            BUNDLE_PATH: vendor/bundle
       - run:
-          command: PATH=~/.bundle/bin:$PATH bundle exec fastlane test
+          command: bundle exec fastlane test
           name: try this
       
