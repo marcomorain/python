@@ -2,17 +2,20 @@ version: 2
 
 jobs:
   build:
+    environment:
+      BUNDLE_PATH: vendor/bundle
     docker:
       - image: circleci/android:api-26-alpha
     steps:
       - checkout
       - run:
           name: wat
-          command: bundle install --path vendor/bundle
+          command: bundle install 
           environment:
             BUNDLE_JOBS: 3
             BUNDLE_RETRY: 3
       - run:
           command: bundle exec fastlane test
           name: try this
+      - run: find vendor
       
