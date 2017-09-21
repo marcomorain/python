@@ -1,3 +1,7 @@
+machine:
+  xcode:
+    version: 9.0
+  
 test:
   override:
     - screencapture $CIRCLE_ARTIFACTS/screen.png
