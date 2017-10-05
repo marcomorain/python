@@ -9,5 +9,5 @@ jobs:
           name: Greeting
           command: echo Hello, world.
       - run:
-          name: Ping
-          command: ping --count 3 circleci.com
+          name: Print the Current Time
+          command: date
