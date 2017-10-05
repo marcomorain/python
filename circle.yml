@@ -1,7 +1,13 @@
-machine:
-  xcode:
-    version: 8.3.9
-  
-test:
-  override:
-    - screencapture $CIRCLE_ARTIFACTS/screen.png
+version: 2
+jobs:
+  build:
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
+      - run:
+          name: Greeting
+          command: echo Hello, world.
+      - run:
+          name: Ping
+          command: ping --count 3 circleci.com
