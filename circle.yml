@@ -12,10 +12,10 @@ general:
 
 dependencies:
   pre:
-    - if [ ! -e $ANDROID_HOME/build-tools/25.0.2 ]; then echo y | android update sdk -u -a -t "tools"; fi
-    - if [ ! -e $ANDROID_HOME/build-tools/25.0.2 ]; then echo y | android update sdk -u -a -t "build-tools-25.0.2"; fi
-    - echo y | android update sdk --no-ui --all --filter "android-25,platform-tools,extra-google-google_play_services,extra-google-m2repository,extra-android-m2repository"
-    - echo y | $ANDROID_HOME/tools/bin/sdkmanager --update
+#    - if [ ! -e $ANDROID_HOME/build-tools/25.0.2 ]; then echo y | android update sdk -u -a -t "tools"; fi
+#    - if [ ! -e $ANDROID_HOME/build-tools/25.0.2 ]; then echo y | android update sdk -u -a -t "build-tools-25.0.2"; fi
+#    - echo y | android update sdk --no-ui --all --filter "android-25,platform-tools,extra-google-google_play_services,extra-google-m2repository,extra-android-m2repository"
+#    - echo y | $ANDROID_HOME/tools/bin/sdkmanager --update
     - echo -e "file.encoding=UTF-8\nandroid.useDeprecatedNdk=true" > gradle.properties
 
   cache_directories:
