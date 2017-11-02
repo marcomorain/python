@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: python
+    steps:
+      - run:
+          name: Run Some Python
+          shell: /usr/bin/env python
+          command: |
+            x = 1 + 2
+            print(x)
