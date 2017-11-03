@@ -2,11 +2,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: python
+      - image: druffer/gforth:latest
     steps:
       - run:
-          name: Run Some Python
-          shell: /usr/bin/env python
+          name: Phil Made Me Do This
+          shell: /usr/bin/env gforth
           command: |
-            x = 1 + 2
-            print(x)
+            2 3 + . 
+            bye
