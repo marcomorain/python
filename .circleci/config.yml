@@ -3,8 +3,11 @@ jobs:
   config_processing_exception:
     steps:
       - run:
-          name: Unexpected exception processing config - Please contact support
-          command: "false"
+          name: Unexpected exception processing config
+          command: |
+            echo Unexpected exception processing config
+            echo Please contact support
+            false
     docker: [image: 'debian:stretch']
 workflows:
   version: 2
