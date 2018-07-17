@@ -1,7 +1,9 @@
+# A config with no workflow defined.
+# Just a single job.
 version: 2
 jobs:
   build:
-    macos:
-      xcode: "9.1.0"
+    docker:
+      - image: circleci/buildpack-deps:18.04-curl
     steps:
-     - checkout
+      - checkout
