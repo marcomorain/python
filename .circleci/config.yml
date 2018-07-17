@@ -1,14 +1,7 @@
 version: 2
 jobs:
-  config_processing_exception:
+  build:
+    macos:
+      xcode: "9.1.0"
     steps:
-      - run:
-          name: Unexpected exception processing config
-          command: |
-            echo Unexpected exception processing config
-            echo Please contact support
-            false
-    docker: [image: 'debian:stretch']
-workflows:
-  version: 2
-  config_processing_exception: {jobs: [config_processing_exception]}
+     - checkout
