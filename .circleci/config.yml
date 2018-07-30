@@ -7,3 +7,19 @@ jobs:
       - image: circleci/buildpack-deps:18.04-curl
     steps:
       - checkout
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - build
+  frequent:
+    triggers:
+      - schedule:
+          cron: "*/5 * * * *"
+          filters:
+            branches:
+              only:
+                - master
+                - beta
+    jobs:
+      - build
