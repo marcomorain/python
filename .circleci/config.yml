@@ -7,13 +7,7 @@ jobs:
       - image: microsoft/dotnet:2.1-sdk
     steps:
       - checkout
-      - run: find .
-      - run: dotnet restore
-      - run: dotnet build -c Release
-      - run: dotnet test -c Release 
-	  - run: dotnet new -i Amazon.Lambda.Templates
-      - run: cd /root/project/src/anixe-lambda-connector
-      - run: dotnet lambda deploy-serverless 
+      - run: ' '
 workflows:
   version: 2
   commit:
