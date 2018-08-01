@@ -7,8 +7,3 @@ jobs:
       - image: circleci/ruby:2.3
     steps:
       - checkout
-workflows:
-  version: 2
-  commit:
-    jobs:
-      - build
