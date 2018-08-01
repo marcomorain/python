@@ -4,6 +4,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/buildpack-deps:18.04-curl
+      - image: circleci/ruby:2.3
     steps:
       - checkout
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - build
