@@ -1,5 +1,7 @@
+
 # A config with no workflow defined.
 # Just a single job.
+
 version: 2
 jobs:
   build:
