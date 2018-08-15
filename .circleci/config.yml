@@ -6,6 +6,6 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.3
+      - image: buildpack-deps:16.04-curl
     steps:
-      - checkout
+      - run: env
