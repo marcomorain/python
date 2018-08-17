@@ -9,3 +9,24 @@ jobs:
       - image: buildpack-deps:16.04-curl
     steps:
       - run: env
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
