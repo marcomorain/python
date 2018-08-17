@@ -1,9 +1,32 @@
+
 # A config with no workflow defined.
 # Just a single job.
+
 version: 2
 jobs:
   build:
     docker:
-      - image: circleci/buildpack-deps:18.04-curl
+      - image: buildpack-deps:16.04-curl
     steps:
-      - checkout
+      - run: env
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
+      - run: sleep 30
