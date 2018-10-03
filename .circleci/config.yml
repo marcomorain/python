@@ -1,11 +1,9 @@
-# A config with no workflow defined.
-# Just a single job.
-bomb: 💣 
 version: 2
 jobs:
-  build:
+  build: &foo
     docker:
       - image: buildpack-deps:16.04-curl
     steps:
       - run: env
       - run: sleep 30
+      - *foo
