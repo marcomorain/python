@@ -1,5 +1,11 @@
 version: 2
 jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      
+jobs:
   build: &foo
     docker:
       - image: buildpack-deps:16.04-curl
