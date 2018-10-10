@@ -1,15 +1,12 @@
-version: 2
-jobs:
-  build:
-    machine: true
-    steps:
-      - checkout
-      
-jobs:
-  build: &foo
-    docker:
-      - image: buildpack-deps:16.04-curl
-    steps:
-      - run: env
-      - run: sleep 30
-      - *foo
+key: &key
+  foo:
+    apple:
+     - 1
+     - 2
+     - 3
+    bar:
+      baz:
+       - 1
+       - two
+       - three:
+         - *key
