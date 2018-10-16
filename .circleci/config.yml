@@ -1,12 +1,10 @@
-key: &key
-  foo:
-    apple:
-     - 1
-     - 2
-     - 3
-    bar:
-      baz:
-       - 1
-       - two
-       - three:
-         - *key
+version: 2
+jobs:
+  build:
+    docker:
+    - image: circleci/node:latest
+    steps:
+    - run:
+        command: echo "🚫"
+    - run:
+        command: echo "🎉"
