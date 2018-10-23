@@ -1,10 +1,2 @@
-version: 2
-jobs:
-  build:
-    docker:
-    - image: circleci/node:latest
-    steps:
-    - run:
-        command: echo "🚫"
-    - run:
-        command: echo "🎉"
+--- !!org.apache.commons.io.filefilter.NameFileFilter
+path-that-will-be-scanned
