@@ -3,6 +3,11 @@ jobs:
   build:
     macos:
       xcode: 9.0.1
+    # Using chruby requires a login shell
+    shell: /bin/bash --login -eo pipefail 
     steps:
       - checkout
-      - run: echo hello
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.4" > ~/.ruby-version
+      - run: ruby -v
