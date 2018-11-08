@@ -1,7 +1,8 @@
-version: 2
+version: 2.1
 jobs:
   build:
     macos:
-      xcode: 10.1.0
+      xcode: 9.0.1
     steps:
       - checkout
+      - run: echo hello
