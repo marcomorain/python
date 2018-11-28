@@ -1,12 +1,5 @@
 version: 2.1
 
-orbs:
-  marc:
-    commands:
-      yell:
-        steps:
-          - echo "HALLO POOH"
-
 jobs:
   build:
     docker:
