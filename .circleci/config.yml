@@ -9,7 +9,7 @@ jobs:
     macos:
       xcode: << parameters.xcode >>
     steps:
-      - run: xcrun simctl list &>/dev/null
+      - run: xcrun simctl list
 
 workflows:
   workflow:
