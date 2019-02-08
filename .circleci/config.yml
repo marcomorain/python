@@ -2,8 +2,9 @@ version: 2.1
 
 jobs:
   build:
+    shell: powershell.exe
+    resource_class: windows.medium
     machine:
-      image: poc-windows-server-2019-base
-    resource_class: w1.medium
+      image: windows-server-2019-poc
     steps:
-      - run: echo hello.
+      - run: echo Hello, CircleCI
