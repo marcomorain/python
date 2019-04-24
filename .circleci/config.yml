@@ -1,11 +1,8 @@
-version: 2
+version: 2.1
 jobs:
   build:
     macos:
-      xcode: "10.1.0"
-    shell: /bin/bash --login -eo pipefail
+      xcode: 10.2.1
     steps:
-      - run:
-          name: Set Ruby Version
-          command: echo "ruby-2.6.1" > ~/.ruby-version
-      - run: ruby -v
+      - checkout
+      - run: brew install wget
