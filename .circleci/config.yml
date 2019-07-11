@@ -2,12 +2,7 @@ version: 2.1
 jobs:
   build:
     macos:
-      xcode: 11.0.0
-    resource_class: m1.large
+      xcode: 9.4.0
     steps:
       - checkout
-      - run:
-          environment:
-            HOMEBREW_NO_AUTO_UPDATE: "1"
-          command: brew install wget
-      - run: wget "https://circleci.com"
+      - run: xcodebuild -version
