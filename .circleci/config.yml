@@ -2,7 +2,8 @@ version: 2.1
 jobs:
   build:
     macos:
-      xcode: 9.4.0
+      xcode: 11.0.0
+    parallelism: 2
     steps:
       - checkout
       - run: xcodebuild -version
