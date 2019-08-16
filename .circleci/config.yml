@@ -1,64 +1,10 @@
 
 version: 2.1
 
-# Short-hand
-
-defaults: &defaults
-  macos:
-    xcode: "11.0.0"
-  working_directory: ~/react-native
-
 jobs:
-  build-test:
-    <<: *defaults
+  build:
+    macos:
+      xcode: "11.0.0"
     steps:
-      - run: ls -R /Library/Java/
-      - run:
-          name: this is the jvm of the container
-          command: /usr/libexec/java_home
-      - run: echo $JAVA_HOME
-      - run: echo $PATH
-      - run: java -version
-      - run:
-          name: js > java
-          command: |
-            echo 'export JAVA_HOME=$(/usr/libexec/java_home)' >> $BASH_ENV
-            echo 'export PATH=${JAVA_HOME}/bin:$PATH' >> $BASH_ENV
-            source $BASH_ENV
-      - run: yarn global add appium-doctor
-      - run: appium-doctor
-      - checkout
-      - attach_workspace:
-          at: ~/react-native
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install Dependencies
-          command: yarn
-      - run:
-          name: Install Carthage
-          command: |
-            brew update
-            brew install carthage
-      - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-      - run:
-          name: Install Cocoa Pods
-          command: pod install
-          working_directory: ios
-      - run:
-          name: Xcodebuild workspace with specified derived data directory
-          command: xcodebuild -workspace ios/XXXApp.xcworkspace -scheme XXXApp -UseModernBuildSystem=NO -configuration Debug -sdk iphonesimulator -derivedDataPath derivedData
-      - run:
-          name: e2e smoke tests
-          command: yarn e2e-circleciTests:ios
-
-workflows:
-  e2e_smokeTests:
-    jobs:
-      - build-test
+      - run: checkout
+# open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
