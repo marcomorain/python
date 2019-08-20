@@ -4,7 +4,6 @@ version: 2.1
 jobs:
   build:
     macos:
-      xcode: "11.0.0"
+      xcode: "0.0.0"
     steps:
-      - run: checkout
-# open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
+      - run: xcodebuild -version
