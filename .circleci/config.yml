@@ -1,9 +1,5 @@
-
 version: 2.1
-
 jobs:
   build:
-    macos:
-      xcode: "0.0.0"
-    steps:
-      - run: xcodebuild -version
+    docker: [{image: "bash:5"}]
+    steps: [{run: exit 0}]
