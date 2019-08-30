@@ -1,5 +1,19 @@
 version: 2.1
 jobs:
   build:
-    docker: [{image: "bash:5"}]
-    steps: [{run: exit 0}]
+    macos:
+      xcode: 11.0.0
+    shell: /usr/local/bin/bash --login -eo pipefail
+    steps:
+      - checkout
+
+      - run:
+          name: Install bash 5 using the system bash
+          shell: /bin/bash -eo pipefail
+          command: brew install bash
+          environment:
+            HOMEBREW_NO_AUTO_UPDATE: 1
+
+      # Now all steps use the new bash:
+      - run: bash -version # Show bash version
+      - run: echo $0       # Show current shell
