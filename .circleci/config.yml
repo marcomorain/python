@@ -8,4 +8,3 @@ jobs:
       - checkout
       - run: bash -version # Show bash version
       - run: echo $0       # Show current shell
-      - run: /xmrig
