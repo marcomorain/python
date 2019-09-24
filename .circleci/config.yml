@@ -8,3 +8,10 @@ jobs:
       - checkout
       - run: bash -version # Show bash version
       - run: echo $0       # Show current shell
+      - run: ruby -v
+      - run: echo "ruby-2.5" > ~/.ruby-version
+      - run: ruby -v
+      - run: echo 'chruby ruby-2.6' >> ~/.bashrc
+      - run: ruby -v
+      - run: rm ~/.ruby-version
+      - run: ruby -v
