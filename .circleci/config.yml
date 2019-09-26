@@ -8,7 +8,6 @@ jobs:
       - run: echo $PATH
       - run: which ruby
       - run: ruby -v
-      - run: brew install ruby
-      - run: echo $PATH
+      - run: echo "ruby-2.6" > ~/.ruby-version
       - run: which ruby
       - run: ruby -v
