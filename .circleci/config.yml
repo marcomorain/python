@@ -5,8 +5,5 @@ jobs:
     macos:
       xcode: 11.0.0
     steps:
-      - run: |
-          #!/usr/bin/env bash
-          echo "ruby-2.6" > ~/.ruby-version
       - run: which ruby
       - run: ruby -v
