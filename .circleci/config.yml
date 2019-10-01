@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     macos:
-      xcode: 11.0.0
+      xcode: 10.2.1
     steps:
       - run: which ruby
       - run: ruby -v
