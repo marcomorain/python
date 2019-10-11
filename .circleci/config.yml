@@ -1,34 +1,8 @@
 version: 2.1
 
-commands:
-  speed_test:
-    steps:
-      - run: ruby-install ruby 2.6.4
-      - run: ruby-install ruby 2.5.6
-  disable_spotlight:
-    steps:
-      - run: sudo touch /.metadata_never_index
-      - run: sudo mdutil -v -a -i off
-      - run: sudo mdutil -v -a -E
-      - run: sudo rm -rf /.Spotlight*
-      - run: sudo mdutil -v -a -s
-
 jobs:
-  spotlight_on:
+  build:
     macos:
-      xcode: 10.2.1
+      xcode: 11.1.0
     steps:
-      - speed_test
-
-  spotlight_off:
-    macos:
-      xcode: 10.2.1
-    steps:
-      - disable_spotlight
-      - speed_test
-
-workflows:
-  workflow:
-    jobs:
-      - spotlight_off
-      - spotlight_on
+      - checkout
