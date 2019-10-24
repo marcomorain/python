@@ -1,9 +1,10 @@
 version: 2.1
 
-
 jobs:
   build:
     macos:
-      xcode: 11.1.0
+      xcode: 0.1.0
     steps:
       - checkout
+      - run: ruby -v
+      - run: mdutil -a -s
