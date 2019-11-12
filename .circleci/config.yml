@@ -3,8 +3,10 @@ version: 2.1
 jobs:
   build:
     macos:
-      xcode: 10.3.0
+      xcode: 11.2.1
     steps:
       - checkout
       - run: ruby -v
       - run: mdutil -a -s
+      - run: uname -a
+      - run: xcodebuild -version
