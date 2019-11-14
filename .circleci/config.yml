@@ -5,9 +5,9 @@ jobs:
     macos:
       xcode: 11.2.1
     steps:
-      - run: sudo chsh -s /bin/bash distiller
+      - run: cat ~/.circle_image
+      - run: xcodebuild -version
       - checkout
       - run: ruby -v
       - run: mdutil -a -s
       - run: uname -a
-      - run: xcodebuild -version
