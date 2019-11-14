@@ -5,6 +5,7 @@ jobs:
     macos:
       xcode: 11.2.1
     steps:
+      - run: sudo chsh -s /bin/bash distiller
       - checkout
       - run: ruby -v
       - run: mdutil -a -s
