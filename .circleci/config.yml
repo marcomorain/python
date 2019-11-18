@@ -2,11 +2,14 @@ version: 2.1
 
 jobs:
   build:
+    environment:
+      ENV: /tmp/env
+      BASH_ENV: /tmp/bash_env
     macos:
       xcode: 11.2.1
     steps:
-      - run: cat ~/.circle_image
-      - run: xcodebuild -version
+      - run: echo 'export PATH=/usr/local/bin:$PATH' >> $ENV
+      - run: echo 'export PATH=/usr/local/bin:$PATH' >> $BASH_ENV
       - checkout
       - run: ruby -v
       - run: mdutil -a -s
