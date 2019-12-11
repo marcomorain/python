@@ -6,3 +6,10 @@ jobs:
       xcode: 8.3.3
     steps:
       - run: echo hello
+
+
+workflows:
+  workflow:
+    jobs:
+      - build:
+          name: 💣
