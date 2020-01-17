@@ -3,10 +3,10 @@ version: 2.1
 jobs:
   build:
     macos:
-      xcode: 8.3.3
+      xcode: 11.3.1
     steps:
       - run: echo hello
-
+      - run: echo world
 
 workflows:
   workflow:
