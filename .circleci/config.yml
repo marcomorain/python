@@ -5,11 +5,8 @@ jobs:
     macos:
       xcode: 11.3.1
     steps:
-      - run: echo hello
-      - run: echo world
-
-workflows:
-  workflow:
-    jobs:
-      - build:
-          name: 💣
+      - run: git clone git@github.com:git/git.git
+      - run: brew unlink gettext && brew link gettext --force
+      - run:
+          command: time make
+          working_directory: ~/project/git
