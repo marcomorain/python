@@ -5,8 +5,18 @@ jobs:
     macos:
       xcode: 11.3.1
     steps:
-      - run: git clone git@github.com:git/git.git
-      - run: brew unlink gettext && brew link gettext --force
+      - run:
+          name: Setup
+          command: |
+            brew install sysbench
+            git clone git@github.com:git/git.git
+            brew unlink gettext && brew link gettext --force
+            sysbench --test=fileio prepare
+      - run:  sysbench --test=cpu --cpu-max-prime=20000 run
       - run:
           command: time make
           working_directory: ~/project/git
+      - run:
+          command: sysbench --test=fileio --file-test-mode=rndrw run
+      - run:
+          command: sysbench --test=cpu --cpu-max-prime=20000 --num-threads=4 run
