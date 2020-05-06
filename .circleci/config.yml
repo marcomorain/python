@@ -2,21 +2,30 @@ version: 2.1
 
 jobs:
   build:
-    macos:
-      xcode: 11.3.1
+    docker:
+      - image: cimg/base:2020.05
     steps:
       - run:
-          name: Setup
-          command: |
-            brew install sysbench
-            git clone git@github.com:git/git.git
-            brew unlink gettext && brew link gettext --force
-            sysbench --test=fileio prepare
-      - run:  sysbench --test=cpu --cpu-max-prime=20000 run
+          name: Sleep
+          command: sleep 15
       - run:
-          command: time make
-          working_directory: ~/project/git
+          name: Sleep
+          command: sleep 15
       - run:
-          command: sysbench --test=fileio --file-test-mode=rndrw run
+          name: Sleep
+          command: sleep 15
       - run:
-          command: sysbench --test=cpu --cpu-max-prime=20000 --num-threads=4 run
+          name: Sleep
+          command: sleep 15
+      - run:
+          name: Sleep
+          command: sleep 15
+      - run:
+          name: Sleep
+          command: sleep 15
+      - run:
+          name: Sleep
+          command: sleep 15
+      - run:
+          name: Sleep
+          command: sleep 15
