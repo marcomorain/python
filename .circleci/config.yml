@@ -1,32 +1,17 @@
 version: 2.1
 
-# foo 
 jobs:
   build:
     docker:
       - image: cimg/base:2020.05
     steps:
       - run:
-          name: Sleep
-          command: sleep 15
-      - run:
-          name: Sleep
-          command: sleep 15
-      - run:
-          name: Sleep
-          command: sleep 15
-      - run:
-          name: Sleep
-          command: sleep 15
-      - run:
-          name: Sleep
-          command: sleep 15
-      - run:
-          name: Sleep
-          command: sleep 15
-      - run:
-          name: Sleep
-          command: sleep 15
-      - run:
-          name: Sleep
-          command: sleep 15
+          command: |
+            echo << pipeline.id                 >>
+            echo << pipeline.number             >>
+            echo << pipeline.project.git_url    >>
+            echo << pipeline.project.type       >>
+            echo << pipeline.git.tag            >>
+            echo << pipeline.git.branch         >>
+            echo << pipeline.git.revision       >>
+            echo << pipeline.git.base_revision  >>
