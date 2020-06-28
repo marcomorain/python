@@ -30,3 +30,8 @@ workflows:
       - deploy:
           requires:
             - test
+
+
+notify:
+  webhooks:
+    - url: https://0c3c11df2ae2.ngrok.io/circleci/webhook
