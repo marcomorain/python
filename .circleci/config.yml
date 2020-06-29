@@ -21,15 +21,19 @@ jobs:
       - run: echo deploy
 
 workflows:
-  workflow:
+  build-test-deploy:
     jobs:
       - build
       - test:
           requires:
             - build
-      - deploy:
+      - approval:
+          type: approval
           requires:
             - test
+      - deploy:
+          requires:
+            - approval
 
 
 notify:
