@@ -12,6 +12,7 @@ jobs:
     docker:
       - image: cimg/base:2020.05
     steps:
+      - checkout
       - run: echo test
       - run: ./fake_webhook.sh
 
@@ -36,7 +37,6 @@ workflows:
           requires:
             - approval
 
-
 notify:
   webhooks:
-    - url: https://0c3c11df2ae2.ngrok.io/circleci/webhook
+    - url: https://ecosystem.eu.ngrok.io/circleci/webhook
