@@ -1,7 +1,6 @@
 version: 2.1
 
 jobs:
-
   build:
     docker:
       - image: cimg/base:2020.05
@@ -21,6 +20,7 @@ jobs:
       - image: cimg/base:2020.05
     steps:
       - run: echo deploy
+
 
 workflows:
   build-test-deploy:
