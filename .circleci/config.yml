@@ -5,38 +5,16 @@ jobs:
     docker:
       - image: cimg/base:2020.05
     steps:
-      - run: echo build
-
-  test:
-    docker:
-      - image: cimg/base:2020.05
-    steps:
-      - checkout
-      - run: echo test
-      - run: ./fake_webhook.sh
-
-  deploy:
-    docker:
-      - image: cimg/base:2020.05
-    steps:
-      - run: echo deploy
-
-
-workflows:
-  build-test-deploy:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
-      - approval:
-          type: approval
-          requires:
-            - test
-      - deploy:
-          requires:
-            - approval
-
-notify:
-  webhooks:
-    - url: https://ecosystem.eu.ngrok.io/circleci/webhook
+      - run: mkfifo wait-for-this
+      - run:
+          name: Slow Background Task
+          background: true
+          command: |
+            sleep 10
+            echo 'done' > wait-for-this
+      - run:
+          name: Fast Foreground Task
+          command: ls -la
+      - run:
+           name: Wait for background task
+           command: cat < wait-for-this
