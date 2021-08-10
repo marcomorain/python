@@ -6,11 +6,11 @@ setup: true
 jobs:
   build:
     docker:
-      - image: marcomorainci/jet:2021.07-20.04
+      - image: mikefarah/yq:4.11.2
     steps:
       - checkout
       - run:
           name: Convert Config
-          command:
+          command:  eval -P .circleci/config.json > continue.yml
       - continuation/continue:
-          configuration_path: config.yml
+          configuration_path: continue.yml
