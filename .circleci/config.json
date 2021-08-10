@@ -4,13 +4,13 @@
         "build": {
             "docker": [
                 {
-                    "image": "2021.07-20.04"
+                    "image": "cimg/base:2021.07-20.04"
                 }
             ],
             "steps": [
                 "checkout",
                 {
-                    "run": "hello from JSON"
+                    "run": "echo hello from JSON"
                 }
             ]
         }

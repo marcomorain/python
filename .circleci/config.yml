@@ -3,14 +3,27 @@ orbs:
   continuation: circleci/continuation@0.2.0
 setup: true
 
+commands:
+  convert:
+    parameters:
+      input:
+        type: string
+        default: .circleci/config.json
+      output:
+        type: string
+        default: .circleci/config.yaml
+    steps:
+      - run:
+          name: Convert Config
+          command: python3 -c 'import sys, yaml, json; print(yaml.dump(json.loads(sys.stdin.read())))' < << parameters.input >> > << parameters.output >>
+
 jobs:
   build:
     docker:
-      - image: mikefarah/yq:4.11.2
+      - image: marcomorainci/config:2021.07-20.04
     steps:
       - checkout
-      - run:
-          name: Convert Config
-          command:  eval -P .circleci/config.json > continue.yml
+      - convert:
+          output: config.yaml
       - continuation/continue:
-          configuration_path: continue.yml
+          configuration_path: config.yaml
