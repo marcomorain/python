@@ -1,8 +1,16 @@
----
 version: 2.1
+orbs:
+  continuation: circleci/continuation@0.2.0
+setup: true
 
 jobs:
   build:
-    machine: true
+    docker:
+      - image: marcomorainci/jet:2021.07-20.04
     steps:
       - checkout
+      - run:
+          name: Convert Config
+          command:
+      - continuation/continue:
+          configuration_path: config.yml
