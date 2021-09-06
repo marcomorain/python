@@ -1,29 +1,18 @@
 version: 2.1
-orbs:
-  continuation: circleci/continuation@0.2.0
-setup: true
-
-commands:
-  convert:
-    parameters:
-      input:
-        type: string
-        default: .circleci/config.json
-      output:
-        type: string
-        default: .circleci/config.yaml
-    steps:
-      - run:
-          name: Convert Config
-          command: python3 -c 'import sys, yaml, json; print(yaml.dump(json.loads(sys.stdin.read())))' < << parameters.input >> > << parameters.output >>
 
 jobs:
   build:
     docker:
-      - image: marcomorainci/config:2021.07-20.04
+      - image: clojure:tools-deps-buster
     steps:
       - checkout
-      - convert:
-          output: config.yaml
-      - continuation/continue:
-          configuration_path: config.yaml
+      - restore_cache:
+          key: cache_2
+      - run: stat test.txt
+      - run: stat src/core.clj
+      - run: clojure -M -m core
+
+      - save_cache:
+          key: cache_2
+          paths:
+            - test.txt
