@@ -6,6 +6,8 @@ jobs:
       - image: clojure:tools-deps-buster
     steps:
       - checkout
+      - setup_remote_docker:
+          version: 19.03.8
       - restore_cache:
           key: cache_2
       - run: stat test.txt
