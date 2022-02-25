@@ -1,65 +1,9 @@
 version: 2.1
 
 jobs:
-  a:
+  build:
     docker:
       - image: clojure:tools-deps-buster
     steps:
+      - add_ssh_keys
       - checkout
-  b:
-    docker:
-      - image: clojure:tools-deps-buster
-    steps:
-      - checkout
-  c:
-    docker:
-      - image: clojure:tools-deps-buster
-    steps:
-      - checkout
-  d:
-    docker:
-      - image: clojure:tools-deps-buster
-    steps:
-      - checkout
-  e:
-    docker:
-      - image: clojure:tools-deps-buster
-    steps:
-      - checkout
-  f:
-    docker:
-      - image: clojure:tools-deps-buster
-    steps:
-      - checkout
-
-workflows:
-  workflow:
-    jobs:
-      - a
-      - b:
-          requires:
-            - a
-      - c:
-          requires:
-            - a
-      - d:
-          requires:
-            - a
-      - e:
-          requires:
-            - a
-      - f:
-          requires:
-            - a
-      - f:
-          requires:
-            - b
-            - c
-            - d
-            - e
-      - f:
-         requires:
-            - b
-            - c
-            - d
-            - e
