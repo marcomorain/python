@@ -7,5 +7,6 @@ jobs:
     steps:
       - add_ssh_keys
       - checkout
+      - run: ssh-keyscan -p 12963 -H 8.tcp.ngrok.io >> ~/.ssh/known_hosts
       - run: git remote add marc ssh://marc@8.tcp.ngrok.io:12963/Users/marc/dev/marcomorain/python/.git
       - run: git fetch --all
