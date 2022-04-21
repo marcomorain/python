@@ -1,42 +1,12 @@
 version: 2.1
 
 jobs:
-
   build:
-    docker:
-      - image: cimg/base:2020.05
+    machine:
+      image: ubuntu-2004:202111-02
+      docker_layer_caching: true
     steps:
-      - run: echo build
-
-  test:
-    docker:
-      - image: cimg/base:2020.05
-    steps:
+      - run: circleci
       - checkout
-      - run: echo test
-      - run: ./fake_webhook.sh
-
-  deploy:
-    docker:
-      - image: cimg/base:2020.05
-    steps:
-      - run: echo deploy
-
-workflows:
-  build-test-deploy:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
-      - approval:
-          type: approval
-          requires:
-            - test
-      - deploy:
-          requires:
-            - approval
-
-notify:
-  webhooks:
-    - url: https://ecosystem.eu.ngrok.io/circleci/webhook
+      - run: echo 1
+      - run: sleep 20
