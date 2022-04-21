@@ -8,3 +8,4 @@ jobs:
     steps:
       - run: circleci
       - checkout
+      - run: echo 1
